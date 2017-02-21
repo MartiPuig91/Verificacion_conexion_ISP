@@ -8,14 +8,16 @@ import os
 import time
 
 
-password = 'PASSWORD'
+
 data = (time.strftime("%d_%m_%y"))
 hora = (time.strftime("%H:%M:%S"))
 
+ruta = os.path.dirname(os.path.abspath(__file__))
+
 
 def Folder():
-	if not os.path.exists('Informes'):
-	    os.makedirs('Informes')
+	if not os.path.exists(ruta+'/Informes'):
+	    os.makedirs(ruta+'/Informes')
 
 def IsInternet():
 
@@ -30,7 +32,7 @@ def IsInternet():
 			testConn.close()
 
 				
-			os.chdir("Informes")
+			os.chdir(ruta+"/Informes")
 			os.system("speedtest >> resultat.txt")
 
 			os.system("sed '8d' resultat.txt >> resultat2.txt")
@@ -40,7 +42,7 @@ def IsInternet():
 			os.system("mv resultat3.txt resultat.txt")
 				
 
-			os.system("python ../creacio_informes.py")
+			os.system("python "+ruta+"/creacio_informes.py")
 					
 
 			os.system("rm resultat.txt")
@@ -48,7 +50,7 @@ def IsInternet():
 		except:
 			testConn.close()
 							
-			os.chdir("Informes")
+			os.chdir(ruta+"/Informes")
 			archi=open('informe.txt', 'a')       #Grabem els resultats obtinguts en el document
 			archi.write(data+' '+hora+'\n')
 			archi.write(' '+'\n')
@@ -60,7 +62,7 @@ def IsInternet():
 	except:
 		
 		#os.chdir("Informes")
-		archi=open('informe.txt', 'a')       #Grabem els resultats obtinguts en el document
+		archi=open(ruta+'/Informes/informe.txt', 'a')       #Grabem els resultats obtinguts en el document
 		archi.write(data+' '+hora+'\n')
 		archi.write(' '+'\n')
 		archi.write('No se ha podido realizar la prueba debido a que el router esta apagado\n')
