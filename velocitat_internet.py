@@ -60,7 +60,6 @@ def IsInternet():
 
 	except:
 		
-		#os.chdir("Informes")
 		archi=open(ruta+'/Informes/informe.txt', 'a')       #Grabem els resultats obtinguts en el document
 		archi.write(data+' '+hora+'\n')
 		archi.write(' '+'\n')
