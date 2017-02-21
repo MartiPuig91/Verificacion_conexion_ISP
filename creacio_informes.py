@@ -8,10 +8,6 @@ import time
 
 data = (time.strftime("%d_%m_%y"))
 hora = (time.strftime("%H:%M:%S"))
-os.getcwd()
-os.system('pwd')
-#os.chdir ('Informes')
-
 
 archi=open('informe.txt','a') #Creem el document si no esta creat
 archi.close()

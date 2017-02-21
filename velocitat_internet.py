@@ -41,7 +41,6 @@ def IsInternet():
 			os.system("rm resultat2.txt")
 			os.system("mv resultat3.txt resultat.txt")
 				
-
 			os.system("python "+ruta+"/creacio_informes.py")
 					
 
