@@ -8,8 +8,6 @@ import os
 import time
 
 
-
-
 password = 'PASSWORD'
 data = (time.strftime("%d_%m_%y"))
 hora = (time.strftime("%H:%M:%S"))
@@ -23,7 +21,7 @@ def IsInternet():
 
 	testConn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	try:
-		testConn.connect(('192.168.1.1', 80))
+		testConn.connect(('10.227.19.1', 23))
 
 
 		testConn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -32,7 +30,7 @@ def IsInternet():
 			testConn.close()
 
 				
-			os.chdir("/home/pi/Desktop/Scripts/Informes")
+			os.chdir("Informes")
 			os.system("speedtest >> resultat.txt")
 
 			os.system("sed '8d' resultat.txt >> resultat2.txt")
@@ -41,16 +39,16 @@ def IsInternet():
 			os.system("rm resultat2.txt")
 			os.system("mv resultat3.txt resultat.txt")
 				
-			os.chdir ("/home/pi/Desktop/Scripts/")
-			os.system("echo $password | sudo -S python creacio_informes.py")
+
+			os.system("python ../creacio_informes.py")
 					
-			os.chdir ("Informes")
+
 			os.system("rm resultat.txt")
 
 		except:
 			testConn.close()
 							
-			os.chdir("/home/pi/Desktop/Scripts/Informes")
+			os.chdir("Informes")
 			archi=open('informe.txt', 'a')       #Grabem els resultats obtinguts en el document
 			archi.write(data+' '+hora+'\n')
 			archi.write(' '+'\n')
@@ -61,7 +59,7 @@ def IsInternet():
 
 	except:
 		
-		os.chdir("/home/pi/Desktop/Scripts/Informes")
+		#os.chdir("Informes")
 		archi=open('informe.txt', 'a')       #Grabem els resultats obtinguts en el document
 		archi.write(data+' '+hora+'\n')
 		archi.write(' '+'\n')
